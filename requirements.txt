@@ -1,4 +1,2 @@
-express
 body-parser
-dotenv
 mongodb
