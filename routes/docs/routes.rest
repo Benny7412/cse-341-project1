@@ -1,0 +1,50 @@
+###Get all contacts
+GET http://localhost:8080/contacts
+
+
+### Get contact by id
+GET http://localhost:8080/contacts/6873342722c3c1af8640897e
+
+
+### Create Contact
+POST http://localhost:8080/contacts/
+content-type: application/json
+
+{
+    "firstName": "Jerry",
+    "lastName": "French",
+    "email": "Jerry.french@gmail.com",
+    "favoriteColor": "Blue",
+    "birthday": "03/04/1999"
+}
+
+### Update Contact
+PUT http://localhost:8080/contacts/6873342722c3c1af8640897e
+content-type: application/json
+
+{
+    "firstName": "Jerry",
+    "lastName": "NotFrench",
+    "email": "Jerry.notfrench@gmail.com",
+    "favoriteColor": "Red",
+    "birthday": "03/04/1999"
+}
+### Update Contact2
+PUT http://localhost:8080/contacts/6873342722c3c1af8640897e
+content-type: application/json
+
+{
+    "firstName": "Jerry",
+    "lastName": "French",
+    "email": "Jerry.french@gmail.com",
+    "favoriteColor": "Blue",
+    "birthday": "03/04/1999"
+}
+
+### Delete Contact
+DELETE http://localhost:8080/contacts/68798bef6fd71fa057b6e8eb
+content-type: application/json
+
+
+
+
