@@ -1,6 +1,5 @@
 const mongodb = require("../routes/data/database");
 const ObjectId = require("mongodb").ObjectId;
-const { validateObjectId } = require("../utilities");
 
 const getAll = async (req, res) => {
   //#swagger.tags=['Contacts']
@@ -16,8 +15,6 @@ const getAll = async (req, res) => {
 
 const getSingle = async (req, res) => {
   //#swagger.tags=['Contacts']
-  validateObjectId(req, res, next);
-
   const userId = new ObjectId(req.params.id);
   const contact = await mongodb
     .getDatabase()
@@ -61,8 +58,6 @@ const createContact = async (req, res) => {
 
 const updateContact = async (req, res) => {
   //#swagger.tags=['Contacts']
-  validateObjectId(req, res, next);
-
   const userId = new ObjectId(req.params.id);
   const contact = {
     firstName: req.body.firstName,
@@ -89,8 +84,6 @@ const updateContact = async (req, res) => {
 
 const deleteContact = async (req, res) => {
   //#swagger.tags=['Contacts']
-  validateObjectId(req, res, next);
-
   const userId = new ObjectId(req.params.id);
 
   // Get the contact to be deleted
