@@ -18,17 +18,26 @@ const swaggerDocument = require("./swagger.json");
 //database
 const mongodb = require("./routes/data/database");
 
-app
-  .use(bodyParser.json())
-  .use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
-  })
+// Middleware
+app.use(bodyParser.json());
+app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  next();
+});
 
-  //routes
-  .use("/", indexRoutes)
-  .use("/contacts", contactsRoutes)
-  .use("/api-docs", docsRoutes);
+// Routes
+app.use("/", indexRoutes);
+app.use("/contacts", contactsRoutes);
+app.use("/api-docs", docsRoutes);
 
 process.on("uncaughtException", (err, origin) => {
   console.log(
